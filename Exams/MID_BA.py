@@ -103,3 +103,41 @@
 # person = Person("abvjc", 232, "male")
 
 # print(person.display_info())
+
+
+
+from abc import ABC, abstractmethod
+class Person:
+    def __init__(self, name:str, age:int, gender:str):
+        self.name = name
+        self.age = age
+        self.gender = gender
+
+    def display_info(self):
+        print(f"Name: {self.name} \nAge: {self.age} \nGender: {self.gender}")
+
+
+class Employee(Person):
+    def __init__(self, employee_id:str, department:str):
+        self.emplayee_id = employee_id
+        self.department = department
+
+    def manage_tasks(self):
+        print(f"Task Managed")
+
+
+class Students(Person):
+    def __init__(self, student_id:str, major:str):
+        self.student_id = student_id
+        self.major = major
+
+    def submit_assignment(self, submission_date, deadline):
+        deadline = list(map(int, deadline.split("/")))
+        deadline_days = (deadline[1]*30) + deadline[0]
+        submission_date = list(map(int, submission_date.split("/")))
+        submission_date_days = (submission_date[1]*30) + submission_date[0]
+
+        if (submission_date_days <= deadline_days):
+            print(f"Your assignment has been submited!")
+        else:
+            print(f"")
