@@ -107,6 +107,8 @@
 
 
 from abc import ABC, abstractmethod
+
+
 class Person:
     def __init__(self, name:str, age:int, gender:str):
         self.name = name
@@ -118,7 +120,8 @@ class Person:
 
 
 class Employee(Person):
-    def __init__(self, employee_id:str, department:str):
+    def __init__(self, name:str, age:int, gender:str, employee_id:str, department:str):
+        super().__init__(name, age, gender)
         self.emplayee_id = employee_id
         self.department = department
 
@@ -126,8 +129,9 @@ class Employee(Person):
         print(f"Task Managed")
 
 
-class Students(Person):
-    def __init__(self, student_id:str, major:str):
+class Student(Person):
+    def __init__(self, name:str, age:int, gender:str, student_id:str, major:str):
+        super().__init__(name, age, gender)
         self.student_id = student_id
         self.major = major
 
@@ -140,4 +144,42 @@ class Students(Person):
         if (submission_date_days <= deadline_days):
             print(f"Your assignment has been submited!")
         else:
-            print(f"")
+            print(f"Your submission date has passed!!! \nYou are {submission_date_days - deadline_days} days late!!!")
+
+    def __str__(self):
+        return f"Student name: {self.name} \nID: {self.student_id} \nAge: {self.age} \nGender: {self.gender} \nMajor: {self.major}"
+    def __repr__(self):
+        return f"Student name: {self.name}; ID: {self.student_id}"
+
+
+class Admin(Employee):
+    def __init__(self, employee_id:str, department:str, name:str, age:int, gender:str, admin_id:str):
+        super().__init__(employee_id, department, name, age, gender)
+        self.admin_id = admin_id
+
+    def handle_requests(n):
+        print(f"{n} requests handled.")
+
+
+class Teacher(Employee):
+    def __init__(self, name:str, age:int, gender:str, employee_id:str, department:str, teacher_id:str, designation:str, subject_taught:str):
+        super().__init__( name, age, gender, employee_id, department)
+        self.teacher_id = teacher_id
+        self.designation = designation
+        self.subject_taught = subject_taught
+
+    def conduct_class(self):
+        print(f"{self.designation} {self.name} is teaching {self.subject_taught}.")
+
+    def __str__(self): 
+        return f"Teacher name: {self.name} \nID: {self.teacher_id} \nAge: {self.age} \nGender: {self.gender} \nEmplyee ID: {self.emplayee_id} \nDepartment: {self.department} \nDesignation: {self.designation} \nSubject taught: {self.subject_taught}"
+
+    def __repr__(self):
+        return f"Teacher name: {self.name}; "
+
+class Classroom:
+    def __init__(self, teacher:Teacher, *students:Student):
+        self.teacher = teacher
+        self.students = [stu for stu in students]
+
+    def 
