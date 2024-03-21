@@ -106,9 +106,6 @@
 
 
 
-from abc import ABC, abstractmethod
-
-
 class Person:
     def __init__(self, name:str, age:int, gender:str):
         self.name = name
@@ -189,7 +186,7 @@ class Classroom:
     def display_class_info(self):
         print(f"Teacher Info: \n{self.teacher}")
         print(f"\nStudents Info:")
-        #print(*self.students)
+        #print(self.students)
         for i in range(len(self.students)):
             print(f"{i+1}. {self.students[i]}")
         
