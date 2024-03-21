@@ -175,11 +175,53 @@ class Teacher(Employee):
         return f"Teacher name: {self.name} \nID: {self.teacher_id} \nAge: {self.age} \nGender: {self.gender} \nEmplyee ID: {self.emplayee_id} \nDepartment: {self.department} \nDesignation: {self.designation} \nSubject taught: {self.subject_taught}"
 
     def __repr__(self):
-        return f"Teacher name: {self.name}; "
+        return f"Teacher name: {self.name}; ID: {self.teacher_id}; Designation: {self.designation}; Department: {self.department}; Subject: {self.subject_taught}"
+
 
 class Classroom:
-    def __init__(self, teacher:Teacher, *students:Student):
-        self.teacher = teacher
-        self.students = [stu for stu in students]
+    #def __init__(self, teacher:Teacher, *students:Student):
+        #self.teacher = teacher
+        #self.students = [stu for stu in students]
+    def __init__(self):
+        self.teacher = None
+        self.students = []
 
+    def display_class_info(self):
+        print(f"Teacher Info: \n{self.teacher}")
+        print(f"\nStudents Info:")
+        #print(*self.students)
+        for i in range(len(self.students)):
+            print(f"{i+1}. {self.students[i]}")
+        
+
+    def add_teacher(self, teacher:Teacher):
+        self.teacher = teacher
+
+    def add_student(self, student:Student):
+        self.students.append(student)
+
+    def conduct_class_session(self):
+        for stu in self.students:
+            if stu == self.students[-1]:
+                print(stu.name, end=" ")
+            else:
+                print(stu.name, end=", ")
+        print(f"are attending the OOP class being taken by {self.teacher.designation} {self.teacher.name}.")
     
+    #def conduct_class_session(self):
+        #print(*self.students, sep="\n\n")
+        #print(f"are attending the OOP class being taken by {self.teacher.designation} {self.teacher.name}")
+
+
+
+class_1 = Classroom()
+t_1 = Teacher("DMF", 46, "Male", "39874", "Data Science", "193479", "Professor", "Machine Learning")
+class_1.add_teacher(t_1)
+
+s_1 = Student("Musfique", 21, "Male", "0152330101", "Data Science")
+s_2 = Student("Tasfiya", 21, "Female", "0152330116", "Data Science")
+class_1.add_student(s_1)
+class_1.add_student(s_2)
+
+class_1.display_class_info()
+class_1.conduct_class_session()
