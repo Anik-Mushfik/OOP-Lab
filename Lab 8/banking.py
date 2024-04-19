@@ -52,6 +52,6 @@ ac_2.deposite(10000, "12/5")
 try:
     ac_2.withdraw(20000, "12/5")
 except InSufficiantBalanceError as error:
-    print(f"Not Enough Balance: Account balance {error.account_balance} is less than Withdrawal balance {error.withdrawal_balance}")
+    print(f"Not Enough Balance: Account balance {error.account_balance} is less than withdrawal balance {error.withdrawal_balance}")
 print(ac_2.get_balance())
 print(ac_2.transactions)

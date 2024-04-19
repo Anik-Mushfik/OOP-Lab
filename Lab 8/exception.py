@@ -21,8 +21,8 @@ except ValueError:
 except ZeroDivisionError:
     print("Learn Math you STUPID!")
 
-# except Exception:
-#     print("Kichu ekta hoise")
+except Exception:
+    print("Kichu ekta hoise")
 
-# except KeyError:
-#     print("Eta print hobe na karon eta Exception er pore ase!")
+except KeyError:
+    print("Eta print hobe na karon eta Exception er pore ase!")
